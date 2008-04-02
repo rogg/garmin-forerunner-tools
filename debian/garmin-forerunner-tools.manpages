@@ -1,0 +1,4 @@
+debian/garmin_dump.1
+debian/garmin_get_info.1
+debian/garmin_gmap.1
+debian/garmin_save_runs.1

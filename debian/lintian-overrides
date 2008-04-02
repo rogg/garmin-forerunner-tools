@@ -1,0 +1,2 @@
+non-dev-pkg-with-shlib-symlink usr/lib/libgarmin.so.4.2.0 usr/lib/libgarmin.so
+package-name-doesnt-match-sonames libgarmin4

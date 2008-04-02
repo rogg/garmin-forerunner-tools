@@ -1,0 +1,12 @@
+garmin-forerunner-tools (0.07-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 02 Apr 2008 18:57:44 +0200
+
+garmin-forerunner-tools (0.05-1) unstable; urgency=low
+
+  * Initial release (Closes: #467039)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 30 Mar 2008 22:17:34 +0200
+
