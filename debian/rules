@@ -42,7 +42,7 @@ clean:
 	[ ! -e Makefile ] || $(MAKE) clean
 	[ ! -h  config.guess ] || mv config.guess.upstream config.guess
 	[ ! -h  config.sub ]   || mv config.sub.upstream config.sub
-	-rm config.{status,log} Makefile
+	-rm config.status config.log Makefile
 	dh_clean 
 
 install: build

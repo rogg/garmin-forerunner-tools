@@ -1,3 +1,9 @@
+garmin-forerunner-tools (0.07-2) unstable; urgency=low
+
+  * debian/rules: fix bashism (Closes: #478384).
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 30 Apr 2008 23:04:52 +0200
+
 garmin-forerunner-tools (0.07-1) unstable; urgency=low
 
   * New upstream release
