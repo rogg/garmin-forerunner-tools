@@ -3,16 +3,18 @@ Section: utils
 Priority: extra
 Maintainer: Ralf Treinen <treinen@debian.org>
 Build-Depends: debhelper (>= 5), autotools-dev, libusb-dev
-Standards-Version: 3.7.3
+Standards-Version: 3.8.0
 Homepage: http://garmintools.googlecode.com
 
 Package: garmin-forerunner-tools
 Architecture: any
 Depends: ${shlibs:Depends}
-Description: retrieve data from Garmin Forerunner GPS devices
- This package contains command-line tools to retrieve data from GPS devices
- from the Garmin Forerunner series (these are wristwatch-like devices that
- allow you to register your exact itinerary when doing outdoor sports). It
- works with the Forerunner 205 and 305 models, and possibly others. Track 
- data can be translated into an XML format, and into a polyline format for
- use with Google maps.
+Description: retrieve data from Garmin Forerunner/Edge GPS devices
+ This package contains command-line tools to retrieve data from GPS
+ devices from the Garmin Forerunner series (these are
+ wristwatch-like devices that allow you to register your exact
+ itinerary when doing outdoor sports) or the Garmin Edge series (the
+ same for cycling computers). It works with the Forerunner 205 and 305
+ models and with the Edge 305 model, and possibly others. Track data
+ can be translated into an XML format and into gpx, and into a
+ polyline format for use with Google maps.

@@ -25,6 +25,7 @@ config.status: configure
 	./configure --host=$(DEB_HOST_GNU_TYPE) \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
+		--mandir=/usr/share/man \
 		CFLAGS="$(CFLAGS)"
 # LDFLAGS="-Wl,-z,defs"
 
@@ -39,7 +40,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp 
-	[ ! -e Makefile ] || $(MAKE) clean
+	[ ! -e Makefile ] || $(MAKE) distclean
 	[ ! -h  config.guess ] || mv config.guess.upstream config.guess
 	[ ! -h  config.sub ]   || mv config.sub.upstream config.sub
 	-rm config.status config.log Makefile

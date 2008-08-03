@@ -1,0 +1,5 @@
+garmin-forerunner-tools (0.09-1) unstable; urgency=low
+
+  * This package now contains the new tools garmin_gpx and garmin_gchart.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 03 Aug 2008 19:33:25 +0200
