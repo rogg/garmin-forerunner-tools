@@ -2,7 +2,8 @@ Source: garmin-forerunner-tools
 Section: utils
 Priority: extra
 Maintainer: Ralf Treinen <treinen@debian.org>
-Build-Depends: debhelper (>= 5), autotools-dev, libusb-dev
+Uploaders: Noèl Köthe <noel@debian.org>
+Build-Depends: debhelper (>= 5.0.45), autotools-dev, libusb-dev
 Standards-Version: 3.8.0
 Homepage: http://garmintools.googlecode.com
 
@@ -18,3 +19,7 @@ Description: retrieve data from Garmin Forerunner/Edge GPS devices
  models and with the Edge 305 model, and possibly others. Track data
  can be translated into an XML format and into gpx, and into a
  polyline format for use with Google maps.
+ .
+ In contrast to the gpsbabel software, this software also downloads
+ data specific to usage in sports like maximal speed, lap summary,
+ calorie consumption, etc.

@@ -1,10 +1,4 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
@@ -21,7 +15,7 @@ config.status: configure
 	[ -h config.guess ] || { mv config.guess config.guess.upstream; \
 		ln -s /usr/share/misc/config.guess; }
 	[ -h config.sub ] || { mv config.sub config.sub.upstream; \
-		ln -s /usr/share/misc/config.sub; }
+	ln -s /usr/share/misc/config.sub; }
 	./configure --host=$(DEB_HOST_GNU_TYPE) \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
@@ -31,12 +25,12 @@ config.status: configure
 
 build: build-stamp
 
-build-stamp:  config.status
+build-stamp: config.status
 	dh_testdir
 	$(MAKE)
 	touch $@
 
-clean:
+clean: 
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp 
@@ -64,6 +58,7 @@ binary-arch: build install
 	dh_installchangelogs ChangeLog
 	dh_installdocs
 	dh_installexamples
+	dh_installudev
 	dh_link
 	dh_makeshlibs
 	dh_strip
@@ -76,4 +71,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install

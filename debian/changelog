@@ -1,3 +1,12 @@
+garmin-forerunner-tools (0.09-2) unstable; urgency=low
+
+  * Libtoolize with newer version of libtools (closes: #493696).
+  * Add Uploader Noèl Köthe.
+  * Install udev rule for foreunner devices.
+  * Long description: explain difference to gpsbabel.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 31 Aug 2008 17:07:20 +0200
+
 garmin-forerunner-tools (0.09-1) unstable; urgency=low
 
   * New upstream release (closes: #491639). This release now contains the
