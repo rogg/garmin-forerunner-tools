@@ -1,0 +1,32 @@
+02 Apr 2008	Dave Bailey <dave at daveb dot net>
+
+	0.07 - Fix missing man pages in dist build.
+
+01 Apr 2008	Dave Bailey <dave at daveb dot net>
+
+	0.06 - Added man pages (thanks to Ralf Treinen).  Added copyright
+	       notices.  Changes to support compilation with a C++ compiler.
+	       Python updates.
+
+27 Jul 2007	Dave Bailey <dave at daveb dot net>
+
+	0.05 - Added support for the D1015 lap data type.
+
+21 Jul 2007	Dave Bailey <dave at daveb dot net>
+
+	0.04 - Changed garmin_init to accept the "verbose" setting.
+
+21 Jul 2007	Dave Bailey <dave at daveb dot net>
+
+	0.03 - Added a -v option to garmin_save_runs and garmin_get_info
+	       for verbose output and debugging.
+	     - Added a "verbose" field to struct garmin_unit.
+
+20 Jul 2007	Dave Bailey <dave at daveb dot net>
+
+	0.02 - Added more error output and improved garmin_dump output.
+
+30 Dec 2006	Dave Bailey <dave at daveb dot net>
+
+	0.01 - Initial version
+
