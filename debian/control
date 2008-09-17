@@ -6,6 +6,8 @@ Uploaders: Noèl Köthe <noel@debian.org>
 Build-Depends: debhelper (>= 5.0.45), autotools-dev, libusb-dev
 Standards-Version: 3.8.0
 Homepage: http://garmintools.googlecode.com
+Vcs-Git: git://git.debian.org/git/pkg-running/garmin-forerunner-tools.git
+Vcs-Browser: http://git.debian.org/?p=pkg-running/garmin-forerunner-tools.git;a=summary
 
 Package: garmin-forerunner-tools
 Architecture: any
