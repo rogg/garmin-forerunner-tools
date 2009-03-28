@@ -16,7 +16,7 @@ License:
     You are free to distribute this software under the terms of
     the GNU General Public License, version 2.
     On Debian systems, the complete text of the GNU General Public
-    License can be found in the /usr/share/common-licenses/GPL file.
+    License can be found in the /usr/share/common-licenses/GPL-2 file.
 
 The Debian packaging is (C) 2008, Ralf Treinen <treinen@debian.org> and
-is licensed under the GPL, see `/usr/share/common-licenses/GPL-2'.
+is licensed under the GPL version 2, see `/usr/share/common-licenses/GPL-2'.
