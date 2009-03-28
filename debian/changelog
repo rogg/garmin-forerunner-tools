@@ -1,8 +1,12 @@
-garmin-forerunner-tools (0.09-3) UNRELEASED; urgency=low
+garmin-forerunner-tools (0.10-1) unstable; urgency=low
 
+  [ Noèl Köthe ]
   * debian/control added Vcs-Git and Vcs-Browser
 
- -- Noèl Köthe <noel@debian.org>  Wed, 17 Sep 2008 21:44:57 +0200
+  [ Ralf Treinen ]
+  * New upstream release.
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 28 Mar 2009 15:27:34 +0100
 
 garmin-forerunner-tools (0.09-2) unstable; urgency=low
 
