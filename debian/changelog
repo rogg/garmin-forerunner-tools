@@ -7,8 +7,10 @@ garmin-forerunner-tools (0.10-1) unstable; urgency=low
   * New upstream release (closes: #521490).
   * Standards-Version 3.8.1 (no change)
   * debian/copyright: point to GPL-2
+  * Renamed files in debian/:
+    {dirs,docs} -> garmin-forerunner-tools.{dirs,docs}
 
- -- Ralf Treinen <treinen@debian.org>  Sat, 28 Mar 2009 15:32:35 +0100
+ -- Ralf Treinen <treinen@debian.org>  Sat, 28 Mar 2009 15:36:37 +0100
 
 garmin-forerunner-tools (0.09-2) unstable; urgency=low
 
