@@ -4,9 +4,11 @@ garmin-forerunner-tools (0.10-1) unstable; urgency=low
   * debian/control added Vcs-Git and Vcs-Browser
 
   [ Ralf Treinen ]
-  * New upstream release.
+  * New upstream release (closes: #521490).
+  * Standards-Version 3.8.1 (no change)
+  * debian/copyright: point to GPL-2
 
- -- Ralf Treinen <treinen@debian.org>  Sat, 28 Mar 2009 15:27:34 +0100
+ -- Ralf Treinen <treinen@debian.org>  Sat, 28 Mar 2009 15:32:35 +0100
 
 garmin-forerunner-tools (0.09-2) unstable; urgency=low
 
