@@ -14,3 +14,4 @@ gpsbabel package:
 blacklist garmin_gps
 
  -- Ralf Treinen <treinen@debian.org>, Mon, 25 Aug 2008 00:06:08 +0200
+
