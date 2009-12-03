@@ -1,9 +1,12 @@
-garmin-forerunner-tools (0.10-2) UNRELEASED; urgency=low
+garmin-forerunner-tools (0.10-2) unstable; urgency=low
 
   * Debian/watch: use complete path for download url (closes: #550736).
     Thanks a lot to Yan Morin for the patch!
-  
- -- Ralf Treinen <treinen@debian.org>  Mon, 12 Oct 2009 19:59:29 +0200
+  * Converted to source format 3.0 (quilt):
+    - added debian/source/format
+  * Standards-Version 3.8.3 (no change)
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 03 Dec 2009 21:12:31 +0100
 
 garmin-forerunner-tools (0.10-1) unstable; urgency=low
 
