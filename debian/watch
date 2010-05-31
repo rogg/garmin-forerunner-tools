@@ -1,3 +1,5 @@
 version=3
-http://code.google.com/p/garmintools/downloads/list\
-	http://garmintools.googlecode.com/files/garmintools-(.*)\.tar\.gz
+http://googlecode.debian.net/p/garmintools/garmintools-(.*)\.tar\.gz
+
+# http://code.google.com/p/garmintools/downloads/list\
+#	http://garmintools.googlecode.com/files/garmintools-(.*)\.tar\.gz
