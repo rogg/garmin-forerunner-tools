@@ -1,8 +1,9 @@
 garmin-forerunner-tools (0.10-3) UNRELEASED; urgency=low
 
   * debian/watch: use the googlecode.debian.net redirector service.
+  * debian/copyright: fix licence, one may choose later versions of GPL.
 
- -- Ralf Treinen <treinen@debian.org>  Mon, 31 May 2010 09:01:34 +0200
+ -- Ralf Treinen <treinen@debian.org>  Sat, 22 Jan 2011 14:54:11 +0100
 
 garmin-forerunner-tools (0.10-2) unstable; urgency=low
 
