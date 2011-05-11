@@ -1,0 +1,271 @@
+Description: output laps, hr and cad (heart rate and cadence) into gpx file
+Origin: http://garmintools.googlecode.com/issues/attachment?aid=753452771107486670&name=gpx_laps_hr_cad-02.diff&token=3687b3d9e5e5f0f3d55e4131ce69eb3d
+Bug: https://code.google.com/p/garmintools/issues/detail?id=15
+Bug-Debian: http://bugs.debian.org/589948
+Forwarded: not-needed
+
+Index: garmin-forerunner-tools/src/garmin_gpx.c
+===================================================================
+--- garmin-forerunner-tools.orig/src/garmin_gpx.c
++++ garmin-forerunner-tools/src/garmin_gpx.c
+@@ -20,6 +20,7 @@
+ #include "config.h"
+ #include <math.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <time.h>
+ #include "garmin.h"
+ 
+@@ -34,16 +35,21 @@
+ {
+   float lat, lon, elev;
+   time_t t;
++  int lap;
++  int pause;
++  uint8 hr;
++  uint8 cad;
+ } route_point;
+ 
+ int
+-get_gpx_data ( garmin_data *    data,
+-               route_point   ** points,
++get_gpx_data ( garmin_data *    fulldata,
++               route_point   *** tracks,
+                position_type *  sw,
+                position_type *  ne )
+ {
+   garmin_list *       dlist;
+   garmin_list_node *  node;
++  garmin_list_node *  lapnode;
+   garmin_data *       point;
+   D304 *              d304;
+   route_point *       rp;
+@@ -52,9 +58,28 @@
+   float               minlon =  180.0;
+   float               maxlon = -180.0;
+   int                 ok     = 0;
++  garmin_data *		data;
++  garmin_list *     glaps;
++  garmin_data*     points;
+ 
+-  if ( data != NULL ) {
+-    data = garmin_list_data(data,2);
++  if ( fulldata != NULL ) {
++
++    // lists: 1=laps, 2=points
++
++    glaps=garmin_list_data(fulldata,1)->data; // get lap information
++
++    // fixme: crash if we didn't get it
++    int laps=glaps->elements+1;
++
++    *tracks = malloc(sizeof(route_point) * (laps));
++    memset(*tracks,0,laps*sizeof(route_point));
++
++    int curlapnum=0;
++
++    lapnode=glaps->head;
++    D1015* lapdata=lapnode->data->data;
++
++    data = garmin_list_data(fulldata, 2); // get track points
+ 
+     if ( data == NULL ) {
+ 
+@@ -64,30 +89,81 @@
+ 
+       dlist = data->data;
+ 
+-      *points = malloc(sizeof(route_point) * (dlist->elements+1));
+-      rp = *points;
++      points = malloc(sizeof(route_point) * (dlist->elements+1+(laps*2)));
++      (*tracks)[curlapnum]=points;
++      rp = points;
+ 
+-      for ( node = dlist->head; node != NULL; node = node->next ) {
+-       point = node->data;
+-       if ( point->type == data_D304 ) {
++      int pause=0;
+ 
+-         d304 = point->data;
++      for ( node = dlist->head; node != NULL; node = node->next ) {
++	point = node->data;
+ 
+-         if ( d304->posn.lat == 0x7fffffff && d304->posn.lon == 0x7fffffff )
+-           continue;
++	switch (point->type) {
++	  case data_D304: // position point
+ 
+-         rp->lat = SEMI2DEG(d304->posn.lat);
+-         rp->lon = SEMI2DEG(d304->posn.lon);
+-          rp->elev = d304->alt;
+-          rp->t = d304->time;
+-
+-         if ( rp->lat < minlat ) minlat = rp->lat;
+-         if ( rp->lat > maxlat ) maxlat = rp->lat;
+-         if ( rp->lon < minlon ) minlon = rp->lon;
+-         if ( rp->lon > maxlon ) maxlon = rp->lon;
++	    d304 = point->data;
+ 
+-          ++rp;
+-        }
++	    if ( d304->posn.lat == 0x7fffffff && d304->posn.lon == 0x7fffffff ) {
++	      pause++;
++	      continue;
++	    }
++
++	    rp->lap=0;
++	    if (lapdata!=NULL) {
++	      if (d304->time >= lapdata->start_time) {
++		if (curlapnum>0) {
++		  rp->t=0; // end previous lap
++		  rp++;
++		  (*tracks)[curlapnum]=rp; // new track
++		}
++		curlapnum++;
++
++		rp->lap=curlapnum;
++		if (d304->time != lapdata->start_time) {
++		  // if lap start point doesn't exist, create it
++		  rp->lat = SEMI2DEG(lapdata->begin.lat);
++		  rp->lon = SEMI2DEG(lapdata->begin.lon);
++
++		  rp->elev = d304->alt; // lap data doesn't contain alt :(
++		  rp->hr=d304->heart_rate;
++		  rp->cad=d304->cadence;
++
++		  rp->t = lapdata->start_time;
++		  rp++;
++		  rp->lap=0;
++		  rp->pause=0;
++		}
++		lapnode=lapnode->next;
++		if (lapnode!=NULL)
++		  lapdata=lapnode->data->data;
++		else
++		  lapdata=NULL; // last lap
++	      }
++	    }
++
++	    rp->lat = SEMI2DEG(d304->posn.lat);
++	    rp->lon = SEMI2DEG(d304->posn.lon);
++	    rp->elev = d304->alt;
++	    rp->t = d304->time;
++	    rp->hr=d304->heart_rate;
++	    rp->cad=d304->cadence;
++
++
++	    if (pause==2) {
++	      rp->pause=1;
++	      pause=0;
++	    } else rp->pause=0;
++
++	    if ( rp->lat < minlat ) minlat = rp->lat;
++	    if ( rp->lat > maxlat ) maxlat = rp->lat;
++	    if ( rp->lon < minlon ) minlon = rp->lon;
++	    if ( rp->lon > maxlon ) maxlon = rp->lon;
++
++	    ++rp;
++	    break;
++	  default: //printf("unknown frame %i\n", point->type);
++	    ;
++	}
+       }
+       rp->t = 0;
+ 
+@@ -152,11 +228,15 @@
+ {
+   print_spaces(fp,spaces);
+   fprintf(fp,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+-  fprintf(fp,"<gpx version=\"1.0\"\n"
++  fprintf(fp,"<gpx version=\"1.1\"\n"
+     "creator=\"Garmin Forerunner Tools - http://garmintools.googlecode.com\"\n"
+     "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+-    "xmlns=\"http://www.topografix.com/GPX/1/0\"\n"
+-    "xsi:schemaLocation=\"http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd\">\n");
++    "xmlns:gpxtpx=\"http://www.garmin.com/xmlschemas/TrackPointExtension/v1\"\n"
++    "xmlns=\"http://www.topografix.com/GPX/1/1\"\n"
++    "xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 "
++    "http://www.topografix.com/GPX/1/1/gpx.xsd "
++    "http://www.garmin.com/xmlschemas/TrackPointExtension/v1 "
++    "http://www8.garmin.com/xmlschemas/TrackPointExtensionv1.xsd\">\n");
+ }
+ 
+ static void
+@@ -192,11 +272,37 @@
+   route_point * rp = points;
+   while (rp->t > 0) {
+     print_spaces(fp, spaces);
+-    fprintf(fp, "<rtept lat=\"%f\" lon=\"%f\">\n", rp->lat, rp->lon);
++    fprintf(fp, "<trkpt lat=\"%f\" lon=\"%f\">\n", rp->lat, rp->lon);
+     print_spaces(fp, spaces+2);
+     fprintf(fp, "<ele>%f</ele>\n", rp->elev);
+     print_time_tag(rp->t + TIME_OFFSET, fp, spaces+2);
+-    print_close_tag("rtept", fp, spaces);
++    if (rp->lap) {
++      print_spaces(fp, spaces+2);
++      fprintf(fp,"<name>Lap %i</name>\n",rp->lap);
++    } else if (rp->pause) {
++      print_spaces(fp, spaces+2);
++      fprintf(fp,"<name>Pause</name>\n");
++    }
++
++    if ((rp->hr != 0) || (rp->cad != 0xff)) {
++      print_spaces(fp, spaces+2);
++      fprintf(fp,"<extensions>\n");
++      print_spaces(fp, spaces+2);
++      fprintf(fp,"<gpxtpx:TrackPointExtension>\n");
++      if (rp->hr != 0) {
++	print_spaces(fp, spaces+4);
++	fprintf(fp,"<gpxtpx:hr>%i</gpxtpx:hr>\n",rp->hr);
++      }
++      if (rp->cad != 0xff) {
++	print_spaces(fp, spaces+4);
++	fprintf(fp,"<gpxtpx:cad>%i</gpxtpx:cad>\n",rp->cad);
++      }
++
++      print_close_tag("gpxtpx:TrackPointExtension", fp, spaces+2);
++      print_close_tag("extensions", fp, spaces+2);
++    }
++
++    print_close_tag("trkpt", fp, spaces);
+     ++rp;
+   }
+ }
+@@ -204,20 +310,29 @@
+ void
+ print_gpx_data ( garmin_data * data, FILE * fp, int spaces )
+ {
+-  route_point *         points = NULL;
++  route_point **         laps = NULL;
++  route_point * points;
+   position_type  sw;
+   position_type  ne;
+-  
+-  if ( get_gpx_data(data,&points,&sw,&ne) != 0 ) {
++
++  if ( get_gpx_data(data,&laps,&sw,&ne) != 0 ) {
+     print_gpx_header(fp,spaces);
+     print_time_tag(time(NULL),fp,spaces);
+     print_bounds_tag(&sw,&ne,fp,spaces);
+-    print_open_tag("rte",fp,spaces);
+-    print_route_points(points,fp,spaces+2);
+-    print_close_tag("rte",fp,spaces);
++
++    int i;
++    print_open_tag("trk",fp,spaces);
++    for (i=0; laps[i]!=NULL; i++) {
++      points=laps[i];
++      print_open_tag("trkseg",fp,spaces);
++      print_route_points(points,fp,spaces+2);
++      print_close_tag("trkseg",fp,spaces);
++    }
++    print_close_tag("trk",fp,spaces);
+     print_close_tag("gpx",fp,spaces);
+-    
+-    if ( points != NULL ) free(points);
++
++    free(laps[i]);
++    free(laps);
+   }
+ }
+ 
