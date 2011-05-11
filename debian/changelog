@@ -1,18 +1,17 @@
 garmin-forerunner-tools (0.10-3) UNRELEASED; urgency=low
 
   [ Ralf Treinen ]
-  [Ralf Treinen]
   * debian/watch: use the googlecode.debian.net redirector service.
   * debian/copyright: fix licence, one may choose later versions of GPL.
   * Standards-Version 3.9.2 (no change)
   * Add dependency on ${misc:Depends}
   
-  [Christian Perrier]
+  [ Christian Perrier ]
   * Drop .la file from /usr/lib. Closes: #621287
   * output laps, hr and cad (heart rate and cadence) into gpx file
     Closes: #589948
 
- -- Ralf Treinen <treinen@debian.org>  Wed, 11 May 2011 21:12:19 +0200
+ -- Ralf Treinen <treinen@debian.org>  Wed, 11 May 2011 23:31:26 +0200
 
 garmin-forerunner-tools (0.10-2) unstable; urgency=low
 
