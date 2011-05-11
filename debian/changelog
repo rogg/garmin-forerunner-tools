@@ -1,4 +1,4 @@
-garmin-forerunner-tools (0.10-3) UNRELEASED; urgency=low
+garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
   [ Ralf Treinen ]
   * debian/watch: use the googlecode.debian.net redirector service.
