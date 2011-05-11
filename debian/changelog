@@ -1,3 +1,9 @@
+garmin-forerunner-tools (0.10-3) UNRELEASED; urgency=low
+
+  * Drop .la file from /usr/lib. Closes: #621287
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 11 May 2011 16:04:50 +0200
+
 garmin-forerunner-tools (0.10-2) unstable; urgency=low
 
   * Debian/watch: use complete path for download url (closes: #550736).

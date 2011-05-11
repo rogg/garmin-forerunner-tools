@@ -47,6 +47,8 @@ install: build
 	dh_installdirs
 	$(MAKE) DESTDIR=$(INSTALLDIR) install
 	cd doc/man; $(MAKE) DESTDIR=$(INSTALLDIR) install
+	# *.la files dropped: see #621287
+	rm $(INSTALLDIR)/usr/lib/libgarmintools.la
 	cp debian/lintian-overrides  \
            $(INSTALLDIR)/usr/share/lintian/overrides/garmin-forerunner-tools
 
