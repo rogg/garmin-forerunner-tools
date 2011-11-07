@@ -23,8 +23,9 @@ config.status: configure
 		CFLAGS="$(CFLAGS)"
 # LDFLAGS="-Wl,-z,defs"
 
-build: build-stamp
-
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
 build-stamp: config.status
 	dh_testdir
 	$(MAKE)

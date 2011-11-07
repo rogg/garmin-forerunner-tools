@@ -1,3 +1,9 @@
+garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
+
+  * Add build-arch and build-indep build targets
+
+ -- Christian Perrier <bubulle@sesostris.kheops.frmug.org>  Mon, 07 Nov 2011 06:18:14 +0100
+
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
   [ Ralf Treinen ]
