@@ -1,8 +1,14 @@
 garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
 
+  [ Christian Perrier ]
   * Add build-arch and build-indep build targets
 
- -- Christian Perrier <bubulle@sesostris.kheops.frmug.org>  Mon, 07 Nov 2011 06:18:14 +0100
+  [ Ralf Treinen ]
+  * debian/watch: drop the googlecode redirector which is no longer
+    needed, use instead a direct url following the instructions on
+    http://wiki.debian.org/debian/watch.
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 24 Oct 2012 09:55:56 +0200
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
