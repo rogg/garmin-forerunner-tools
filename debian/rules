@@ -8,6 +8,11 @@
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
 INSTALLDIR = $(CURDIR)/debian/garmin-forerunner-tools
 
 config.status: configure
@@ -20,7 +25,7 @@ config.status: configure
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
 		--mandir=/usr/share/man \
-		CFLAGS="$(CFLAGS)"
+                $(shell dpkg-buildflags --export=configure)
 # LDFLAGS="-Wl,-z,defs"
 
 build: build-arch build-indep
