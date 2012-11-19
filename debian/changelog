@@ -8,8 +8,9 @@ garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
     needed, use instead a direct url following the instructions on
     http://wiki.debian.org/debian/watch.
   * add patch hurd_no_path_max: Do not use PATH_MAX on hurd (closes: #693285)
+  * Standards-Version 3.9.4 (no change)
 
- -- Ralf Treinen <treinen@debian.org>  Mon, 19 Nov 2012 20:44:55 +0100
+ -- Ralf Treinen <treinen@debian.org>  Mon, 19 Nov 2012 20:49:11 +0100
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
