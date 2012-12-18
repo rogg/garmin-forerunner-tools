@@ -19,7 +19,7 @@ Index: garmin-forerunner-tools/src/run.c
  
    if ( (filedir = getenv("GARMIN_SAVE_RUNS")) != NULL ) {
 +#ifdef __GNU__
-+    filedir = realpath(NULL);
++    filedir = realpath(filedir,NULL);
 +#else
      filedir = realpath(filedir,path);
 +#endif /* __GNU__ */
