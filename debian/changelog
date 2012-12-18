@@ -10,8 +10,12 @@ garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
   * add patch hurd_no_path_max: Do not use PATH_MAX on hurd (closes: #693285)
   * Standards-Version 3.9.4 (no change)
   * debian/rules: pass dpkg buildflags to ./configure
+  * blacklisting the garmin_gps kernel module (closes: #696147):
+    - add debian/garmin-forerunner-tools.modprobe
+    - debian/rules: call dh_installmodules
+    - Remove the README.Debian file which is now redundant.
 
- -- Ralf Treinen <treinen@debian.org>  Mon, 19 Nov 2012 20:53:08 +0100
+ -- Ralf Treinen <treinen@debian.org>  Tue, 18 Dec 2012 08:10:46 +0100
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 

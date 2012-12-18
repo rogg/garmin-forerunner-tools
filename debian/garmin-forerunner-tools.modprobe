@@ -1,0 +1,2 @@
+# garmin_gps gets in the way of forerunner-tools
+blacklist garmin_gps
