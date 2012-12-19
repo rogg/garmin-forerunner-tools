@@ -1,4 +1,4 @@
-garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
+garmin-forerunner-tools (0.10-4) experimental; urgency=low
 
   [ Christian Perrier ]
   * Add build-arch and build-indep build targets
@@ -15,7 +15,7 @@ garmin-forerunner-tools (0.10-4) UNRELEASED; urgency=low
     - debian/rules: call dh_installmodules
     - Remove the README.Debian file which is now redundant.
 
- -- Ralf Treinen <treinen@debian.org>  Tue, 18 Dec 2012 08:10:46 +0100
+ -- Ralf Treinen <treinen@debian.org>  Wed, 19 Dec 2012 08:43:12 +0100
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
