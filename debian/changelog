@@ -14,8 +14,9 @@ garmin-forerunner-tools (0.10-4) experimental; urgency=low
     - add debian/garmin-forerunner-tools.modprobe
     - debian/rules: call dh_installmodules
     - Remove the README.Debian file which is now redundant.
+  * add debian/gbp.conf to enforce use of pristine-tar.
 
- -- Ralf Treinen <treinen@debian.org>  Wed, 19 Dec 2012 08:43:12 +0100
+ -- Ralf Treinen <treinen@debian.org>  Sun, 23 Dec 2012 19:07:41 +0100
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
