@@ -1,4 +1,4 @@
-garmin-forerunner-tools (0.10-4) experimental; urgency=low
+garmin-forerunner-tools (0.10repacked-1) experimental; urgency=low
 
   [ Christian Perrier ]
   * Add build-arch and build-indep build targets
@@ -14,9 +14,10 @@ garmin-forerunner-tools (0.10-4) experimental; urgency=low
     - add debian/garmin-forerunner-tools.modprobe
     - debian/rules: call dh_installmodules
     - Remove the README.Debian file which is now redundant.
-  * add debian/gbp.conf to enforce use of pristine-tar.
+  * add debian/gbp.conf to enforce use of pristine-tar. Rebuild orig.tar.gz
+    with pristine tar.
 
- -- Ralf Treinen <treinen@debian.org>  Sun, 23 Dec 2012 19:07:41 +0100
+ -- Ralf Treinen <treinen@debian.org>  Sun, 23 Dec 2012 19:40:38 +0100
 
 garmin-forerunner-tools (0.10-3) unstable; urgency=low
 
