@@ -1,26 +1,21 @@
-This package was debianized by Ralf Treinen <treinen@debian.org> on
-Sun, 30 Mar 2008 22:17:34 +0200.
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: garmintools
+Upstream-Contact: Dave Bailey <dave@daveb.net>
+Source: http://code.google.com/p/garmintools/downloads/list
 
-It was downloaded from http://code.google.com/p/garmintools/
+Files: *
+Copyright: (C) 2006-2008 Dave Bailey
+License: GPL2+
 
-Upstream Author: 
+Files: debian/*
+Copyright: (C) 2008-2013 Ralf Treinen
+License: GPL2+
 
-    Dave Bailey <dave@daveb.net>
-
-Copyright: 
-
-    Copyright (C) 2006-2008 Dave Bailey
-
-License:
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    On Debian systems, the complete text of the GNU General Public
-    License can be found in the /usr/share/common-licenses/GPL-2 file.
-
-The Debian packaging is (C) 2008-2011, Ralf Treinen
-<treinen@debian.org> and is licensed under the same licence as the
-software itself.
+License: GPL2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ On Debian systems, the complete text of the GNU General Public
+ License can be found in the /usr/share/common-licenses/GPL-2 file.

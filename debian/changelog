@@ -1,3 +1,9 @@
+garmin-forerunner-tools (0.10repacked-2) unstable; urgency=low
+
+  * debian/copyright: machine-readable format 1.0
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 20 May 2013 13:48:11 +0200
+
 garmin-forerunner-tools (0.10repacked-1) experimental; urgency=low
 
   [ Christian Perrier ]
