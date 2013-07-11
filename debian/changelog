@@ -1,3 +1,12 @@
+garmin-forerunner-tools (0.10repacked-3) unstable; urgency=low
+
+  * patch exit_on_unpack_failure: make the function garmin_unpack_chunk
+    exit the program when the input file name has an unknown suffix, or
+    when the length of an input chunk is not as expected.
+    (closes: #715938,#715939,#715940,#715941)
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 11 Jul 2013 22:00:44 +0200
+
 garmin-forerunner-tools (0.10repacked-2) unstable; urgency=low
 
   * debian/copyright: machine-readable format 1.0

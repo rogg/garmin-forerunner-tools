@@ -1,2 +1,3 @@
 output_laps_hr_cad_in_gpx.patch
 hurd_no_path_max
+exit_on_unpack_failure

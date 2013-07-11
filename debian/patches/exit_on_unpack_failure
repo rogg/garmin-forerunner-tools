@@ -1,0 +1,26 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: garmin_unpack_chunk exits when unexpected data is found.
+Debian-bug: #715938, #715939, #715940, #715941
+
+Index: garmin-forerunner-tools/src/unpack.c
+===================================================================
+--- garmin-forerunner-tools.orig/src/unpack.c	2013-07-11 21:52:51.000000000 +0200
++++ garmin-forerunner-tools/src/unpack.c	2013-07-11 21:55:18.000000000 +0200
+@@ -1139,13 +1139,15 @@
+ 
+     if ( unpacked != chunk ) {      
+       /* unpacked the wrong number of bytes! */
+-      printf("garmin_unpack_chunk: unpacked %d bytes (expecting %d)\n",
++      printf("garmin_unpack_chunk: unpacked %d bytes (expecting %d). Exiting.\n",
+ 	     unpacked,chunk);
++      exit(1);
+     }
+     
+   } else {
+     /* unknown file format */
+-    printf("garmin_unpack_chunk: not a .gmn file\n");
++    printf("garmin_unpack_chunk: not a .gmn file. Exiting.\n");
++    exit(1);
+   }
+ 
+   return data;
