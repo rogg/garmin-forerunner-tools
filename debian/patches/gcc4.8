@@ -1,0 +1,16 @@
+Description: Fix the size of data in garmin_packet. This caused 
+  a segmentation fault when compiled with gcc4.8
+Author: Jared Casper
+Debian-Bug: #720710 
+
+--- garmin-forerunner-tools.orig/src/garmin.h
++++ garmin-forerunner-tools/src/garmin.h
+@@ -1509,7 +1509,7 @@
+     uint8            reserved4;
+     uint8            reserved5;
+     uint8            size[4];      /*  bytes 8-11  */
+-    uint8            data[1];      /*  bytes 12+   */
++    uint8            data[1012];   /*  bytes 12+   */
+   }                  packet;
+   char               data[1024];
+ } garmin_packet;

@@ -1,3 +1,11 @@
+garmin-forerunner-tools (0.10repacked-4) unstable; urgency=low
+
+  * patch gcc4.8: Fix Segmentation Fault when compiled with gcc4.8
+    (closes: #720710). Patch by Jared Casper downloaded from the upstream
+    issue tracker.
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 26 Aug 2013 21:06:50 +0200
+
 garmin-forerunner-tools (0.10repacked-3) unstable; urgency=low
 
   * patch exit_on_unpack_failure: make the function garmin_unpack_chunk
