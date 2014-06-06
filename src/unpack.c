@@ -1139,13 +1139,15 @@ garmin_unpack_chunk ( uint8 ** pos )
 
     if ( unpacked != chunk ) {      
       /* unpacked the wrong number of bytes! */
-      printf("garmin_unpack_chunk: unpacked %d bytes (expecting %d)\n",
+      printf("garmin_unpack_chunk: unpacked %d bytes (expecting %d). Exiting.\n",
 	     unpacked,chunk);
+      exit(1);
     }
     
   } else {
     /* unknown file format */
-    printf("garmin_unpack_chunk: not a .gmn file\n");
+    printf("garmin_unpack_chunk: not a .gmn file. Exiting.\n");
+    exit(1);
   }
 
   return data;
